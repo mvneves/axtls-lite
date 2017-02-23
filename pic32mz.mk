@@ -1,0 +1,4 @@
+CROSS_COMPILER = xc32-
+CFLAGS = -Wall
+CFLAGS += -DBARE_METAL
+CFLAGS += -mprocessor=32MZ2048EFM144 -Os -mno-float

@@ -122,7 +122,26 @@ EXP_FUNC void STDCALL gettimeofday(struct timeval* t,void* timezone);
 EXP_FUNC int STDCALL strcasecmp(const char *s1, const char *s2);
 EXP_FUNC int STDCALL getdomainname(char *buf, int buf_size);
 
-#else   /* Not Win32 */
+#elif defined(BARE_METAL)
+
+#include <unistd.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <sys/time.h>
+#include <sys/wait.h>
+
+#define alloca(x)	__builtin_alloca(x)
+
+#define SOCKET_READ(A,B,C)      read(A,B,C)
+#define SOCKET_WRITE(A,B,C)     write(A,B,C)
+#define SOCKET_CLOSE(A)         if (A >= 0) close(A)
+#define TTY_FLUSH()
+
+#ifndef be64toh
+#define be64toh(x) __be64_to_cpu(x)
+#endif
+
+#else /* Not Win32, not bare metal */
 
 #include <unistd.h>
 #include <pwd.h>
@@ -147,7 +166,7 @@ EXP_FUNC int STDCALL getdomainname(char *buf, int buf_size);
 #define be64toh(x) __be64_to_cpu(x)
 #endif
 
-#endif  /* Not Win32 */
+#endif  /* Not Win32, not bare metal */
 
 /* some functions to mutate the way these work */
 EXP_FUNC int STDCALL ax_open(const char *pathname, int flags); 

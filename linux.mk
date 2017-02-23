@@ -1,0 +1,2 @@
+CROSS_COMPILER = 
+CFLAGS = -Wall #-Os
