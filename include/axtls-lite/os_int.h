@@ -42,7 +42,7 @@ extern "C" {
 #endif
 
 /* some bool types - just make life easier */
-typedef char bool;
+typedef char bool_t;
 #define false       0
 #define true        1
 

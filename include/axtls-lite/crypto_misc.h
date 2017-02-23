@@ -96,13 +96,13 @@ struct _x509_ctx
     bigint *digest;
     uint16_t sig_len;
     uint8_t sig_type;
-    bool basic_constraint_present;
-    bool basic_constraint_is_critical;
-    bool key_usage_present;
-    bool key_usage_is_critical;
-    bool subject_alt_name_present;
-    bool subject_alt_name_is_critical;
-    bool basic_constraint_cA;
+    bool_t basic_constraint_present;
+    bool_t basic_constraint_is_critical;
+    bool_t key_usage_present;
+    bool_t key_usage_is_critical;
+    bool_t subject_alt_name_present;
+    bool_t subject_alt_name_is_critical;
+    bool_t basic_constraint_cA;
     int basic_constraint_pathLenConstraint;
     uint32_t key_usage;
     struct _x509_ctx *next;
@@ -166,7 +166,7 @@ int asn1_next_obj(const uint8_t *buf, int *offset, int obj_type);
 int asn1_skip_obj(const uint8_t *buf, int *offset, int obj_type);
 int asn1_get_big_int(const uint8_t *buf, int *offset, uint8_t **object);
 int asn1_get_int(const uint8_t *buf, int *offset, int32_t *val);
-int asn1_get_bool(const uint8_t *buf, int *offset, bool *val);
+int asn1_get_bool(const uint8_t *buf, int *offset, bool_t *val);
 int asn1_get_bit_string_as_int(const uint8_t *buf, int *offset, uint32_t *val);
 int asn1_version(const uint8_t *cert, int *offset, int *val);
 int asn1_validity(const uint8_t *cert, int *offset, X509_CTX *x509_ctx);
@@ -178,7 +178,7 @@ int asn1_compare_dn(char * const dn1[], char * const dn2[]);
 int asn1_is_subject_alt_name(const uint8_t *cert, int offset);
 int asn1_is_basic_constraints(const uint8_t *cert, int offset);
 int asn1_is_key_usage(const uint8_t *cert, int offset);
-bool asn1_is_critical_ext(const uint8_t *buf, int *offset);
+bool_t asn1_is_critical_ext(const uint8_t *buf, int *offset);
 #endif /* CONFIG_SSL_CERT_VERIFICATION */
 int asn1_signature_type(const uint8_t *cert, 
                                 int *offset, X509_CTX *x509_ctx);

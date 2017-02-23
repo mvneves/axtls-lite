@@ -132,6 +132,20 @@ EXP_FUNC int STDCALL getdomainname(char *buf, int buf_size);
 
 #define alloca(x)	__builtin_alloca(x)
 
+static inline void * __attribute__((always_inline)) xxmemcpy(void *d,  const void *s, size_t n)
+{
+    unsigned char *dtemp = d;
+    const unsigned char *stemp = s;
+
+    while (n--) {
+        *(dtemp++) = *(stemp++);
+    }
+    return d;
+}
+
+#define memcpy xxmemcpy
+
+
 #define SOCKET_READ(A,B,C)      read(A,B,C)
 #define SOCKET_WRITE(A,B,C)     write(A,B,C)
 #define SOCKET_CLOSE(A)         if (A >= 0) close(A)
