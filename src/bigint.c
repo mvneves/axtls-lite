@@ -65,8 +65,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
-#include "os_port.h"
-#include "bigint.h"
+#include <axtls-lite/os_port.h>
+#include <axtls-lite/bigint.h>
 
 #define V1      v->comps[v->size-1]                 /**< v1 for division */
 #define V2      v->comps[v->size-2]                 /**< v2 for division */

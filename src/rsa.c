@@ -37,8 +37,8 @@
 #include <string.h>
 #include <time.h>
 #include <stdlib.h>
-#include "os_port.h"
-#include "crypto.h"
+#include <axtls-lite/os_port.h>
+#include <axtls-lite/crypto.h>
 
 void RSA_priv_key_new(RSA_CTX **ctx, 
         const uint8_t *modulus, int mod_len,

@@ -1,5 +1,6 @@
 CC = $(CROSS_COMPILER)gcc
 AR = $(CROSS_COMPILER)ar
+CFLAGS := $(CFLAGS) -I../include
 
 libaxtls-lite.a:
 	$(CC) -c sha256.c $(CFLAGS)

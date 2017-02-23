@@ -7,22 +7,13 @@ all:
 		echo "    make " $$B; \
 	done
 
-ifeq ($(MAKECMDGOALS),pic32mz)
-include pic32mz.mk
-endif
-ifeq ($(MAKECMDGOALS),linux)
-include linux.mk
-endif
-ifeq ($(MAKECMDGOALS),test)
-include linux.mk
-endif
+linux:
+	$(eval include linux.mk)
+	make -C src
 
-lib:
-	make -C src CROSS_COMPILER=$(CROSS_COMPILER) CFLAGS="$(CFLAGS)"
-
-linux: lib
-
-pic32mz: lib
+pic32mz:
+	$(eval include pic32mz.mk)
+	make -C src
 
 test: clean linux
 	make -C tests

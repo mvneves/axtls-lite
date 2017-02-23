@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "crypto.h"
+#include <axtls-lite/crypto.h>
 #include "rootkey.h"
 
 void print_hex(char *prefix, unsigned char buffer[], int len)

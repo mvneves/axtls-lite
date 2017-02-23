@@ -29,8 +29,8 @@
  */
 
 #include <string.h>
-#include "os_port.h"
-#include "crypto.h"
+#include <axtls-lite/os_port.h>
+#include <axtls-lite/crypto.h>
 
 #define GET_UINT32(n,b,i)                       \
 {                                               \

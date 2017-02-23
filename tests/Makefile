@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -I../src -Wall
-LDFLAGS= -laxtls-lite -L../src/
+LDFLAGS = -laxtls-lite -L../src/
+CFLAGS := $(CFLAGS) -I../include
 
 all:
 	$(CC) -c test_sha256.c $(CFLAGS)

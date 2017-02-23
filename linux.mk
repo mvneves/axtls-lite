@@ -1,2 +1,4 @@
 CROSS_COMPILER = 
 CFLAGS = -Wall #-Os
+export CROSS_COMPILER
+export CFLAGS
